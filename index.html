@@ -2,12 +2,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>sound</title>
+<title>Sound</title>
 </head>
 <body>
-<audio autoplay>
+
+<audio id="s" autoplay>
   <source src="sound.mp3" type="audio/mpeg">
 </audio>
-</body>
 
+<script>
+  const s = document.getElementById("s");
+  s.play().catch(() => {
+    // Если браузер блокнул автозапуск, делаем обход:
+    document.body.addEventListener("click", () => s.play());
+  });
+</script>
+
+</body>
 </html>
